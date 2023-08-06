@@ -1,7 +1,6 @@
 package hibernate_many_to_many.entity;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class Child {
     @Column(name = "age")
     private int age;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(name = "child_section"
             , joinColumns = @JoinColumn(name = "child_id")
             , inverseJoinColumns = @JoinColumn(name = "section_id"))
